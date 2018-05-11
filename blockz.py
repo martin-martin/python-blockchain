@@ -25,16 +25,21 @@ class Block:
             str: new unique Block hash
         """
         sha = hasher.sha256()
-        sha.update(f"{self.index}{self.timestamp}{self.data}{self.previous_hash}")
+        sha.update(f"{self.index}\
+                    {self.timestamp}\
+                    {self.data}\
+                    {self.previous_hash}")
         return sha.hexdigest()
 
+
 def create_genesis_block():
-    """creates the Block that starts the chain without a previous hash as input.
+    """creates the Block that starts the chain without previous hash as input.
 
     Returns:
         Block: the genesis Block, the one and only.
     """
     return Block(0, date.datetime.now(), "Genesis Block", "0")
+
 
 def next_block(previous_block):
     """creates the next block.
